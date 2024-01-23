@@ -29,6 +29,8 @@ class _CardPageState extends State<CardPage> {
         appBar: AppBar(
           backgroundColor: Colors.black,
           bottom: const AppBarWidget(
+          viewAdd: true,
+          viewSearch: true,
             nameAppBar: "Карты",
           ),
         ),

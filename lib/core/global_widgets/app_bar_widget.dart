@@ -3,7 +3,10 @@ import 'package:vkarmane/features/cards/presentation/widgets/card_add_widget.dar
 
 class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
   final String nameAppBar;
-  const AppBarWidget({super.key, required this.nameAppBar});
+  final bool viewAdd;
+  final bool viewSearch;
+  const AppBarWidget(
+      {super.key, required this.nameAppBar, required this.viewAdd, required this.viewSearch});
 
   @override
   Widget build(BuildContext context) {
@@ -23,25 +26,29 @@ class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
                 ),
               ),
               const Spacer(),
-              IconButton(
-                  splashRadius: 30,
-                  onPressed: () {
-                    if (nameAppBar == "Карты") {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => CardAddWidget()));
-                    }
-                  },
-                  icon: const Icon(
-                    Icons.add,
-                    color: Colors.white,
-                    size: 30,
-                  ))
+              viewAdd
+                  ? IconButton(
+                      splashRadius: 30,
+                      onPressed: () {
+                        if (nameAppBar == "Карты") {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => CardAddWidget()));
+                        }
+                      },
+                      icon: const Icon(
+                        Icons.add,
+                        color: Colors.white,
+                        size: 30,
+                      ))
+                  : Container()
             ],
           ),
           const SizedBox(
             height: 10,
           ),
-          SizedBox(
+          viewSearch?SizedBox(
             height: 50,
             child: TextField(
               style: const TextStyle(color: Colors.white, fontSize: 16),
@@ -57,7 +64,7 @@ class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
                       borderRadius: BorderRadius.circular(15),
                       borderSide: BorderSide.none)),
             ),
-          )
+          ): Container()
         ],
       ),
     );

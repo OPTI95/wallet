@@ -13,6 +13,8 @@ class VisitCardPage extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.black,
         bottom: const AppBarWidget(
+          viewSearch: true,
+          viewAdd: true,
           nameAppBar: "Визитки",
         ),
       ),
